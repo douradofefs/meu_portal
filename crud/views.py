@@ -1,4 +1,4 @@
-from django.views.generic import CreateView, DetailView, UpdateView
+from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
 from .models import Element 
 
 class CreateElement(CreateView):
@@ -11,3 +11,7 @@ class DetailElement(DetailView):
 class UpdateElement(UpdateView):
 	model = Element
 	fields = ('code', 'text')
+
+class DeleteElement(DeleteView):
+	model = Element
+
