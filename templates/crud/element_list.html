@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<table class="table table-hover">
+  <tr>
+    <th>Código</th>
+    <th>Texto</th>
+    <th>Editar</th>
+    <th>Remover</th>
+  </tr>
+  {% for object in object_list %}
+	<tr>
+  		<td><a href="{% url 'element_detail' pk=object.pk %}">{{ object.code }}</a></td>
+  		<td><a href="{% url 'element_detail' pk=object.pk %}">{{ object.text }}</a></td>
+  		<td><a href="{% url 'element_update' pk=object.pk %}"><span class="glyphicon glyphicon-pencil"></span></a></td>
+  		<td><a href="{% url 'element_delete' pk=object.pk %}"><span class="glyphicon glyphicon-trash"></span></a></td>
+  </tr>
+  {% endfor %}
+</table>
+	{% if is_paginated %}
+    <ul class="pagination">
+        {% for num in page_obj.paginator.page_range %}
+            {% ifequal num page_obj.number %}
+                <li class="active"><a>{{ num }}</a></li>
+            {% else %}
+                {% if num <= page_obj.number|add:2 and num >= page_obj.number|add:-2 %}
+                    <li><a href="?page={{ num }}">{{ num }}</a></li>
+                {% endif %}
+            {% endifequal %}
+        {% endfor %}
+    </ul>
+    {% endif %}
+{% endblock %}
