@@ -10,5 +10,5 @@ class Element(models.Model):
 	text = models.TextField(verbose_name='Texto')
 
 	def __str__(self):
-		return str(self.code)
+		return self.text
 		

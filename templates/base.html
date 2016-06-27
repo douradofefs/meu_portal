@@ -3,8 +3,8 @@
     <head>
     	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-		<link href="https://fonts.googleapis.com/css?family=Specimen&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-        <title>Meu Portal</title>
+        <title>Meu Portal{% block title %}{% endblock %}</title>
+        {% block extra_css %}{% endblock %}
     </head>
     <body>
         <div class="page-header">
@@ -18,5 +18,6 @@
                 </div>
             </div>
         </div>
+        {% block extra_js %}{% endblock %}
     </body>
 </html>

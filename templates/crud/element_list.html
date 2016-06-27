@@ -1,5 +1,20 @@
 {% extends "base.html" %}
+{% load selectable_tags %}
+
+{% block title %} - Listagem{% endblock %}
+
+{% block extra_css %}
+  {# adicionar css necessario para o selectable #}
+  {% include_ui_theme %}
+  {{ form.media.css }}
+{% endblock %}
+
 {% block content %}
+<form method="GET">
+    {{ form.autocomplete.label }}
+    {{ form.autocomplete }}
+  <button type="submit" class="save btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+</form>
 <table class="table table-hover">
   <tr>
     <th>Código</th>
@@ -29,4 +44,10 @@
         {% endfor %}
     </ul>
     {% endif %}
+{% endblock %}
+
+{% block extra_js %}
+  {# adicionar javascript necessario para o selectable #}
+  {% include_jquery_libs %}
+  {{ form.media.js }}
 {% endblock %}
