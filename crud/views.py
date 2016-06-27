@@ -25,8 +25,10 @@ class ListElement(ListView):
 
 def get_text_from_api():
 	response = requests.get('http://api.randomuser.me/')
-	js = response.json()
-	return js.get('results')[0].get('location').get('street')
+	if response.status_code == 200:
+		js = response.json()
+		return js.get('results')[0].get('location').get('street')
+	return ''
 
 def randomize():
 	return random.randrange(100000)
